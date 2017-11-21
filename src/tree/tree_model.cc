@@ -5,6 +5,7 @@
  */
 #include <xgboost/tree_model.h>
 #include <sstream>
+#include <iomanip>
 #include "./param.h"
 
 namespace xgboost {
@@ -144,6 +145,7 @@ std::string RegTree::DumpModel(const FeatureMap& fmap,
                                bool with_stats,
                                std::string format) const {
   std::stringstream fo("");
+  fo.precision(18);
   for (int i = 0; i < param.num_roots; ++i) {
     DumpRegTree(fo, *this, fmap, i, 0, false, with_stats, format);
   }

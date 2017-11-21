@@ -289,6 +289,7 @@ void CLIDumpModel(const CLIParam& param) {
   std::unique_ptr<dmlc::Stream> fo(
       dmlc::Stream::Create(param.name_dump.c_str(), "w"));
   dmlc::ostream os(fo.get());
+  os.precision(18);
   if (param.dump_format == "json") {
     os << "[" << std::endl;
     for (size_t i = 0; i < dump.size(); ++i) {
@@ -332,6 +333,7 @@ void CLIPredict(const CLIParam& param) {
   std::unique_ptr<dmlc::Stream> fo(
       dmlc::Stream::Create(param.name_pred.c_str(), "w"));
   dmlc::ostream os(fo.get());
+  os.precision(18);
   for (bst_float p : preds) {
     os << p << '\n';
   }
