@@ -371,7 +371,7 @@ SEXP XGBoosterDumpModel_R(SEXP handle, SEXP fmap, SEXP with_stats, SEXP dump_for
   out = PROTECT(allocVector(STRSXP, olen));
   if (!strcmp("json", fmt)) {
     std::stringstream stream;
-    stream.precision(18);
+    stream.precision(22);
     stream <<  "[\n";
     for (size_t i = 0; i < olen; ++i) {
       stream << res[i];
@@ -386,7 +386,7 @@ SEXP XGBoosterDumpModel_R(SEXP handle, SEXP fmap, SEXP with_stats, SEXP dump_for
   } else {
     for (size_t i = 0; i < olen; ++i) {
       std::stringstream stream;
-      stream.precision(18);
+      stream.precision(22);
       stream <<  "booster[" << i <<"]\n" << res[i];
       SET_STRING_ELT(out, i, mkChar(stream.str().c_str()));
     }
